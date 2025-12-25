@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import {type SimulationContext} from "./types.ts";
 import {setupMatrix, drawMatrix} from "./simulation.ts";
-import {ToggleSimulationButton} from "./toggleSimulationButton.tsx";
+import ControlPanel from "./controlPanel.tsx";
 
 /**
  * Resizes canvas to match its display size.
@@ -21,7 +21,7 @@ const resizeCanvas = (canvas: HTMLCanvasElement | null) => {
 };
 
 
-function App() {
+const App = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const contextRef = useRef<SimulationContext>({
         rows: 100,
@@ -54,7 +54,7 @@ function App() {
 
     return (
         <>
-            <ToggleSimulationButton canvasRef={canvasRef} contextRef={contextRef} isRunningRef={isRunningRef}/>
+            <ControlPanel canvasRef={canvasRef} contextRef={contextRef} isRunningRef={isRunningRef}/>
             <div className="w-screen h-screen m-0">
                 <canvas ref={canvasRef} className="w-full h-full block"></canvas>
             </div>
