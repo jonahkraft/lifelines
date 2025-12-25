@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {type SimulationContext} from "./types.ts";
 import {setupMatrix, drawMatrix} from "./simulation.ts";
 import ControlPanel from "./controlPanel.tsx";
@@ -23,7 +23,7 @@ const resizeCanvas = (canvas: HTMLCanvasElement | null) => {
 
 const App = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const contextRef = useRef<SimulationContext>({
+    const [context, setContext] = useState<SimulationContext>({
         rows: 100,
         columns: 200,
         initialAliveRate: 0.3,
@@ -40,21 +40,26 @@ const App = () => {
      */
     useEffect(() => {
         resizeCanvas(canvasRef.current);
-        drawMatrix(canvasRef.current!, contextRef.current);
+        drawMatrix(canvasRef.current!, context);
 
         const handleResize = () => {
             if (resizeCanvas(canvasRef.current)) {
-                drawMatrix(canvasRef.current!, contextRef.current);
+                drawMatrix(canvasRef.current!, context);
             }
         }
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    }, [context]);
 
     return (
         <>
-            <ControlPanel canvasRef={canvasRef} contextRef={contextRef} isRunningRef={isRunningRef}/>
+            <ControlPanel
+                canvasRef={canvasRef}
+                globalContext={context}
+                isRunningRef={isRunningRef}
+                setGlobalContext={setContext}
+            />
             <div className="w-screen h-screen m-0">
                 <canvas ref={canvasRef} className="w-full h-full block"></canvas>
             </div>

@@ -1,16 +1,14 @@
-import {simulateSzenario} from "./simulation.ts";
-import {type SimulationContext} from "./types.ts";
 import {type RefObject, useState} from "react";
 import {Check, X} from "lucide-react";
 
 
 type SimulationBtnProps = {
-    canvasRef: RefObject<HTMLCanvasElement | null>,
-    contextRef: RefObject<SimulationContext>,
-    isRunningRef: RefObject<boolean>
+    isRunningRef: RefObject<boolean>,
+    onClick: () => void,
+    startSimulation: (callbackFunction: () => void) => () => void
 }
 
-export const ToggleSimulationButton = ({canvasRef, contextRef, isRunningRef}: SimulationBtnProps) => {
+export const ToggleSimulationButton = ({isRunningRef, onClick, startSimulation}: SimulationBtnProps) => {
     const [isRunning, setIsRunning] = useState(false);
 
     /**
@@ -19,13 +17,15 @@ export const ToggleSimulationButton = ({canvasRef, contextRef, isRunningRef}: Si
      * However, if isRunning (global) is set the false, the simulation ends.
      */
     const handleClick = () => {
+        onClick();
+
         if (isRunning) {
             setIsRunning(false);
             isRunningRef.current = false;
         } else {
             setIsRunning(true);
             isRunningRef.current = true;
-            simulateSzenario(canvasRef.current!, contextRef.current, isRunningRef, () => setIsRunning(false));
+            startSimulation(() => setIsRunning(false))();
         }
     }
 
