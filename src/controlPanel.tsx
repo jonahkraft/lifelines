@@ -97,8 +97,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
             <h2 className="text-2xl font-semibold mb-6">Simulation settings</h2>
 
             <div className="m-2 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7">
-                <div className="flex flex-col gap-2">
-                    <label>Number of rows:</label>
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm">Number of rows</label>
                     <input
                         type="number"
                         className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
@@ -109,8 +109,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label>Number of columns:</label>
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm">Number of columns</label>
                     <input
                         type="number"
                         className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
@@ -121,8 +121,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label>Number of iterations:</label>
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm">Number of iterations</label>
                     <input
                         type="number"
                         className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
@@ -133,8 +133,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label>Initial alive rate (in %):</label>
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm">Initial alive rate (in %)</label>
                     <input
                         type="number"
                         className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
@@ -145,8 +145,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label>Sleep duration (in ms):</label>
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm">Sleep duration (in ms)</label>
                     <input
                         type="number"
                         className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
@@ -157,8 +157,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label>Dead to alive condition:</label>
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm">Dead to alive condition</label>
                     <input
                         type="text"
                         className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
@@ -169,8 +169,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label>Alive to alive condition:</label>
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm">Alive to alive condition</label>
                     <input
                         type="text"
                         className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-10 w-1/2"
@@ -181,7 +181,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     />
                 </div>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 pt-2 mt-4 border-t border-stone-300 w-fit">
                 <ToggleSimulationButton isRunningRef={isRunningRef} onClick={() => setGlobalContext(localContext)} startSimulation={startSimulation}/>
                 <ResetContextButton onClick={resetContext}/>
             </div>
