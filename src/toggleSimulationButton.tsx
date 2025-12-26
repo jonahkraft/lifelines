@@ -34,14 +34,19 @@ export const ToggleSimulationButton = ({isRunningRef, onClick, startSimulation}:
             onClick={handleClick}
             className={
                 `${isRunning
-                    ? "bg-gray-400 border-gray-700"
-                    : "bg-amber-400 border-amber-500"}
-                rounded-lg m-2 p-2 cursor-pointer flex gap-2    
+                    ? "bg-gray-400 hover:bg-gray-500"
+                    : "bg-amber-400 hover:bg-amber-500"}
+                rounded-lg m-2 p-2 cursor-pointer flex gap-2 h-9 shadow-sm    
                     `
             }
         >
-            { isRunning ? "Stop simulation" : "Start simulation" }
-            { isRunning ? <X /> : <Check /> }
+            <div className="flex items-center">
+                { isRunning ? <X className="w-5 h-5"/> : <Check className="w-5 h-5"/> }
+            </div>
+
+            <div className="flex items-center">
+                { isRunning ? "Stop simulation" : "Start simulation" }
+            </div>
         </button>
     )
 }
