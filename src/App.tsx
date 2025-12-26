@@ -53,17 +53,15 @@ const App = () => {
     }, [context]);
 
     return (
-        <>
+        <div className="w-screen h-screen m-0 flex flex-col">
             <ControlPanel
                 canvasRef={canvasRef}
                 globalContext={context}
                 isRunningRef={isRunningRef}
                 setGlobalContext={setContext}
             />
-            <div className="w-screen h-screen m-0">
-                <canvas ref={canvasRef} className="w-full h-full block"></canvas>
-            </div>
-        </>
+            <canvas ref={canvasRef} className="w-full flex-[1_1_0]"></canvas>
+        </div>
     )
 }
 

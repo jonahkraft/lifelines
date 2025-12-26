@@ -81,7 +81,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
     }
 
     return(
-        <div className="m-2 p-2 border border-amber-400 rounded-md">
+        <div className="m-4 p-2 border border-amber-400 rounded-md flex-[0_0_auto]">
             <h2 className="text-2xl font-semibold mb-6">Simulation settings</h2>
 
             <div className="m-2 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7">
@@ -89,7 +89,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     <label>Number of rows:</label>
                     <input
                         type="number"
-                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-fit"
+                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-1/2"
                         min={3}
                         max={100000}
                         placeholder={localContext.rows.toString()}
@@ -101,7 +101,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     <label>Number of columns:</label>
                     <input
                         type="number"
-                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-fit"
+                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-1/2"
                         min={3}
                         max={100000}
                         placeholder={localContext.columns.toString()}
@@ -113,7 +113,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     <label>Number of iterations:</label>
                     <input
                         type="number"
-                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-fit"
+                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-1/2"
                         min={1}
                         max={100000}
                         placeholder={localContext.numIterations.toString()}
@@ -125,7 +125,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     <label>Initial alive rate (in %):</label>
                     <input
                         type="number"
-                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-fit"
+                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-1/2"
                         min={1}
                         max={100}
                         placeholder={Math.floor(localContext.initialAliveRate * 100).toString()}
@@ -137,7 +137,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     <label>Sleep duration (in ms):</label>
                     <input
                         type="number"
-                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-fit"
+                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-1/2"
                         min={1}
                         max={100000}
                         placeholder={localContext.sleepDuration.toString()}
@@ -149,7 +149,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     <label>Dead to alive condition:</label>
                     <input
                         type="text"
-                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-fit"
+                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-1/2"
                         min={1}
                         max={100}
                         placeholder={localContext.deadToAliveCondition.toString()}
@@ -161,7 +161,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     <label>Alive to alive condition:</label>
                     <input
                         type="text"
-                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-fit"
+                        className="border-amber-400 border rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-amber-500 h-fit w-1/2"
                         min={1}
                         max={100}
                         placeholder={localContext.aliveToAliveCondition.toString()}
