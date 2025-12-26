@@ -14,5 +14,5 @@ export interface SimulationContext {
     numIterations: number,
     deadToAliveCondition: number[],
     aliveToAliveCondition: number[],
-    sleepDuration: 500
+    sleepDuration: number,
 }
