@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import {type SimulationContext} from "./types.ts";
-import {setupMatrix, drawMatrix} from "./simulation.ts";
+import {drawMatrix} from "./simulation.ts";
 import ControlPanel from "./controlPanel.tsx";
+import {DEFAULT_CONTEXT} from "./constants.ts";
 
 /**
  * Resizes canvas to match its display size.
@@ -23,16 +24,7 @@ const resizeCanvas = (canvas: HTMLCanvasElement | null) => {
 
 const App = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const [context, setContext] = useState<SimulationContext>({
-        rows: 100,
-        columns: 200,
-        initialAliveRate: 0.3,
-        matrix: setupMatrix(0.3, 100, 200),
-        numIterations: 100,
-        aliveToAliveCondition: [2, 3],
-        deadToAliveCondition: [3],
-        sleepDuration: 500,
-    });
+    const [context, setContext] = useState<SimulationContext>(structuredClone(DEFAULT_CONTEXT));
     const isRunningRef = useRef(false);
 
     /**
