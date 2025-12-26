@@ -86,8 +86,10 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
      * Resets the context
      */
     const resetContext = () => {
-        setLocalContext(structuredClone(DEFAULT_CONTEXT));
-        setGlobalContext(structuredClone(DEFAULT_CONTEXT));
+        if (!isRunningRef.current) {
+            setLocalContext(structuredClone(DEFAULT_CONTEXT));
+            setGlobalContext(structuredClone(DEFAULT_CONTEXT));
+        }
     }
 
     return(
