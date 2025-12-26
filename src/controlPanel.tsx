@@ -93,6 +93,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Number of rows"
                     type="number"
+                    value={localContext.rows}
                     placeholder={localContext.rows.toString()}
                     onChange={handleNumInputChange("rows")}
                     min={3}
@@ -102,6 +103,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Number of columns"
                     type="number"
+                    value={localContext.columns}
                     placeholder={localContext.columns.toString()}
                     onChange={handleNumInputChange("columns")}
                     min={3}
@@ -111,6 +113,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Number of iterations"
                     type="number"
+                    value={localContext.numIterations}
                     placeholder={localContext.numIterations.toString()}
                     onChange={handleNumInputChange("numIterations")}
                     min={1}
@@ -120,6 +123,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Initial alive rate (in %)"
                     type="number"
+                    value={localContext.initialAliveRate}
                     placeholder={localContext.initialAliveRate.toString()}
                     onChange={handleNumInputChange("initialAliveRate")}
                     min={1}
@@ -129,6 +133,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Sleep duration (in ms)"
                     type="number"
+                    value={localContext.sleepDuration}
                     placeholder={localContext.sleepDuration.toString()}
                     onChange={handleNumInputChange("sleepDuration")}
                     min={1}
@@ -138,6 +143,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Dead to alive condition"
                     type="text"
+                    value={localContext.deadToAliveCondition}
                     placeholder={localContext.deadToAliveCondition.toString()}
                     onChange={handleTextInputChange("deadToAliveCondition")}
                 />
@@ -145,6 +151,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Alive to alive condition"
                     type="text"
+                    value={localContext.aliveToAliveCondition}
                     placeholder={localContext.aliveToAliveCondition.toString()}
                     onChange={handleTextInputChange("aliveToAliveCondition")}
                 />
