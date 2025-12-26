@@ -22,40 +22,38 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
      * @param field The key of the attribute to modify
      */
     const handleNumChange = (field: keyof SimulationContext) => (e: ChangeEvent<HTMLInputElement>)=>  {
-        if (field === "rows") {
-            setLocalContext(prev => ({
-                ...prev,
-                [field]: Number(e.target.value),
-                matrix: setupMatrix(localContext.initialAliveRate, Number(e.target.value), localContext.columns)
-            }));
-        }
-        else if (field === "columns") {
-            setLocalContext(prev => ({
-                ...prev,
-                [field]: Number(e.target.value),
-                matrix: setupMatrix(localContext.initialAliveRate, localContext.rows, Number(e.target.value))
-            }));
-        }
-        else {
-            setLocalContext(prev => ({
-                ...prev,
-                [field]: Number(e.target.value),
-                matrix: setupMatrix(localContext.initialAliveRate, localContext.rows, localContext.columns)
-            }));
-        }
-    }
+        switch (field) {
+            case "rows":
+                setLocalContext(prev => ({
+                    ...prev,
+                    [field]: Number(e.target.value),
+                    matrix: setupMatrix(localContext.initialAliveRate, Number(e.target.value), localContext.columns)
+                }));
+                break;
 
-    /**
-     * Updates the initialAliveRate attribute of the context
-     */
-    const handleInitialAliveRateChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (Math.abs(localContext.initialAliveRate -  Number(e.target.value) / 100) < 0.0005) return;
+            case "columns":
+                setLocalContext(prev => ({
+                    ...prev,
+                    [field]: Number(e.target.value),
+                    matrix: setupMatrix(localContext.initialAliveRate, localContext.rows, Number(e.target.value))
+                }));
+                break;
 
-        setLocalContext(prev => ({
-            ...prev,
-            initialAliveRate: Number(e.target.value) / 100,
-            matrix: setupMatrix(Number(e.target.value) / 100, localContext.rows, localContext.columns)
-        }));
+            case "initialAliveRate":
+                setLocalContext(prev => ({
+                    ...prev,
+                    [field]: Number(e.target.value),
+                    matrix: setupMatrix(Number(e.target.value), localContext.rows, localContext.columns)
+                }));
+                break;
+
+            default:
+                setLocalContext(prev => ({
+                    ...prev,
+                    [field]: Number(e.target.value),
+                    matrix: setupMatrix(localContext.initialAliveRate, localContext.rows, localContext.columns)
+                }));
+        }
     }
 
     /**
@@ -128,8 +126,8 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                 <ControlPanelInput
                     title="Initial alive rate (in %)"
                     type="number"
-                    placeholder={Math.floor(localContext.initialAliveRate * 100).toString()}
-                    onChange={handleInitialAliveRateChange}
+                    placeholder={localContext.initialAliveRate.toString()}
+                    onChange={handleNumChange("initialAliveRate")}
                     min={1}
                     max={100}
                 />

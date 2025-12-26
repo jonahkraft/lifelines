@@ -31,18 +31,19 @@ const countLivingNeighbours = (i: number, j: number, context: SimulationContext)
 /**
  * Creates and initializes a matrix with random cell states
  *
- * @param aliveRatePerCell - Probability [0.0, 1.0] that a cell starts alive
+ * @param aliveRatePerCell - Probability [0, 100] that a cell starts alive
  * @param rows - Number of rows
  * @param columns - Number of columns
  * @returns Initialized boolean matrix
  */
 export const setupMatrix = (aliveRatePerCell: number, rows: number, columns: number) => {
+    console.log(aliveRatePerCell)
     const matrix: boolean[][] = [];
 
     for (let i = 0; i < rows; i++) {
         matrix[i] = [];
         for (let j = 0; j < columns; j++) {
-            matrix[i][j] = Math.random() < aliveRatePerCell;
+            matrix[i][j] = Math.random() * 100 < aliveRatePerCell;
         }
     }
     return matrix;
