@@ -8,7 +8,7 @@ export const DEFAULT_CONTEXT: SimulationContext = {
     initialAliveRate: 30,
     matrix: setupMatrix(30, 100, 200),
     numIterations: 100,
-    aliveToAliveCondition: [2, 3],
-    deadToAliveCondition: [3],
+    aliveToAliveCondition: "2,3",
+    deadToAliveCondition: "3",
     sleepDuration: 500,
 }

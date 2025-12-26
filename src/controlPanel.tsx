@@ -21,7 +21,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
      * Generic function that returns a function which updates one attribute of "localContext" which has the type number.
      * @param field The key of the attribute to modify
      */
-    const handleNumChange = (field: keyof SimulationContext) => (e: ChangeEvent<HTMLInputElement>)=>  {
+    const handleNumInputChange = (field: keyof SimulationContext) => (e: ChangeEvent<HTMLInputElement>)=>  {
         switch (field) {
             case "rows":
                 setLocalContext(prev => ({
@@ -57,21 +57,15 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
     }
 
     /**
-     * Updates aliveToAliveCondition or deadToAliveCondition
+     * Generic function that returns a function which updates one attribute of "localContext" which has the type string.
+     * @param field The key of the attribute to modify
      */
-    const handleListInputChange = (field: "aliveToAliveCondition" | "deadToAliveCondition") => (e: ChangeEvent<HTMLInputElement>) => {
-        try {
-            const arr = e.target.value.split(",").map(s => Number(s.trim()));
-
-            setLocalContext(prev => ({
-                ...prev,
-                [field]: arr,
-                matrix: setupMatrix(localContext.initialAliveRate, localContext.rows, localContext.columns)
-            }));
-        }
-        catch (e) {
-            console.error(e);
-        }
+    const handleTextInputChange = (field: keyof SimulationContext) => (e: ChangeEvent<HTMLInputElement>) => {
+        setLocalContext(prev => ({
+            ...prev,
+            [field]: e.target.value,
+            matrix: setupMatrix(localContext.initialAliveRate, localContext.rows, localContext.columns)
+        }));
     }
 
     /**
@@ -100,7 +94,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     title="Number of rows"
                     type="number"
                     placeholder={localContext.rows.toString()}
-                    onChange={handleNumChange("rows")}
+                    onChange={handleNumInputChange("rows")}
                     min={3}
                     max={100000}
                 />
@@ -109,7 +103,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     title="Number of columns"
                     type="number"
                     placeholder={localContext.columns.toString()}
-                    onChange={handleNumChange("columns")}
+                    onChange={handleNumInputChange("columns")}
                     min={3}
                     max={100000}
                 />
@@ -118,7 +112,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     title="Number of iterations"
                     type="number"
                     placeholder={localContext.numIterations.toString()}
-                    onChange={handleNumChange("numIterations")}
+                    onChange={handleNumInputChange("numIterations")}
                     min={1}
                     max={100000}
                 />
@@ -127,7 +121,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     title="Initial alive rate (in %)"
                     type="number"
                     placeholder={localContext.initialAliveRate.toString()}
-                    onChange={handleNumChange("initialAliveRate")}
+                    onChange={handleNumInputChange("initialAliveRate")}
                     min={1}
                     max={100}
                 />
@@ -136,7 +130,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     title="Sleep duration (in ms)"
                     type="number"
                     placeholder={localContext.sleepDuration.toString()}
-                    onChange={handleNumChange("sleepDuration")}
+                    onChange={handleNumInputChange("sleepDuration")}
                     min={1}
                     max={100000}
                 />
@@ -145,14 +139,14 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     title="Dead to alive condition"
                     type="text"
                     placeholder={localContext.deadToAliveCondition.toString()}
-                    onChange={handleListInputChange("deadToAliveCondition")}
+                    onChange={handleTextInputChange("deadToAliveCondition")}
                 />
 
                 <ControlPanelInput
                     title="Alive to alive condition"
                     type="text"
                     placeholder={localContext.aliveToAliveCondition.toString()}
-                    onChange={handleListInputChange("aliveToAliveCondition")}
+                    onChange={handleTextInputChange("aliveToAliveCondition")}
                 />
             </div>
 

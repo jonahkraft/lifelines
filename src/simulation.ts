@@ -67,11 +67,11 @@ const simulateStep = (context: SimulationContext) => {
             if (cellIsAlive) {
                 // if the cell is alive and the number of living neighbours is contained in aliveToAliveCondition, the
                 // cell stays alive.
-                nextMatrix[i][j] = context.aliveToAliveCondition.includes(numberLivingNeighbours);
+                nextMatrix[i][j] = context.aliveToAliveCondition.includes(numberLivingNeighbours.toString());
             } else {
                 // if the cell is dead and the number of living neighbours is contained in deadToAliveCondition, the
                 // cell becomes alive.
-                nextMatrix[i][j] = context.deadToAliveCondition.includes(numberLivingNeighbours);
+                nextMatrix[i][j] = context.deadToAliveCondition.includes(numberLivingNeighbours.toString());
             }
         }
     }
