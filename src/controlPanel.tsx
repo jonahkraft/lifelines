@@ -4,6 +4,7 @@ import {ToggleSimulationButton} from "./toggleSimulationButton.tsx";
 import {setupMatrix, simulateSzenario} from "./simulation.ts";
 import {DEFAULT_CONTEXT} from "./constants.ts";
 import ResetContextButton from "./resetContextButton.tsx";
+import ControlPanelInput from "./controlPanelInput.tsx";
 
 
 type ControlPanelProps = {
@@ -97,90 +98,66 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
             <h2 className="text-2xl font-semibold mb-6">Simulation settings</h2>
 
             <div className="m-2 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7">
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm">Number of rows</label>
-                    <input
-                        type="number"
-                        className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
-                        min={3}
-                        max={100000}
-                        placeholder={localContext.rows.toString()}
-                        onChange={handleNumChange("rows")}
-                    />
-                </div>
+                <ControlPanelInput
+                    title="Number of rows"
+                    type="number"
+                    placeholder={localContext.rows.toString()}
+                    onChange={handleNumChange("rows")}
+                    min={3}
+                    max={100000}
+                />
 
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm">Number of columns</label>
-                    <input
-                        type="number"
-                        className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
-                        min={3}
-                        max={100000}
-                        placeholder={localContext.columns.toString()}
-                        onChange={handleNumChange("columns")}
-                    />
-                </div>
+                <ControlPanelInput
+                    title="Number of columns"
+                    type="number"
+                    placeholder={localContext.columns.toString()}
+                    onChange={handleNumChange("columns")}
+                    min={3}
+                    max={100000}
+                />
 
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm">Number of iterations</label>
-                    <input
-                        type="number"
-                        className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
-                        min={1}
-                        max={100000}
-                        placeholder={localContext.numIterations.toString()}
-                        onChange={handleNumChange("numIterations")}
-                    />
-                </div>
+                <ControlPanelInput
+                    title="Number of iterations"
+                    type="number"
+                    placeholder={localContext.numIterations.toString()}
+                    onChange={handleNumChange("numIterations")}
+                    min={1}
+                    max={100000}
+                />
 
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm">Initial alive rate (in %)</label>
-                    <input
-                        type="number"
-                        className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
-                        min={1}
-                        max={100}
-                        placeholder={Math.floor(localContext.initialAliveRate * 100).toString()}
-                        onChange={handleInitialAliveRateChange}
-                    />
-                </div>
+                <ControlPanelInput
+                    title="Initial alive rate (in %)"
+                    type="number"
+                    placeholder={Math.floor(localContext.initialAliveRate * 100).toString()}
+                    onChange={handleInitialAliveRateChange}
+                    min={1}
+                    max={100}
+                />
 
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm">Sleep duration (in ms)</label>
-                    <input
-                        type="number"
-                        className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
-                        min={1}
-                        max={100000}
-                        placeholder={localContext.sleepDuration.toString()}
-                        onChange={handleNumChange("sleepDuration")}
-                    />
-                </div>
+                <ControlPanelInput
+                    title="Sleep duration (in ms)"
+                    type="number"
+                    placeholder={localContext.sleepDuration.toString()}
+                    onChange={handleNumChange("sleepDuration")}
+                    min={1}
+                    max={100000}
+                />
 
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm">Dead to alive condition</label>
-                    <input
-                        type="text"
-                        className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-9 w-1/2"
-                        min={1}
-                        max={100}
-                        placeholder={localContext.deadToAliveCondition.toString()}
-                        onChange={handleListInputChange("deadToAliveCondition")}
-                    />
-                </div>
+                <ControlPanelInput
+                    title="Dead to alive condition"
+                    type="text"
+                    placeholder={localContext.deadToAliveCondition.toString()}
+                    onChange={handleListInputChange("deadToAliveCondition")}
+                />
 
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm">Alive to alive condition</label>
-                    <input
-                        type="text"
-                        className="bg-white border-stone-300 border rounded-md p-1 focus:outline-none focus:ring focus:ring-amber-400 h-10 w-1/2"
-                        min={1}
-                        max={100}
-                        placeholder={localContext.aliveToAliveCondition.toString()}
-                        onChange={handleListInputChange("aliveToAliveCondition")}
-                    />
-                </div>
+                <ControlPanelInput
+                    title="Alive to alive condition"
+                    type="text"
+                    placeholder={localContext.aliveToAliveCondition.toString()}
+                    onChange={handleListInputChange("aliveToAliveCondition")}
+                />
             </div>
+
             <div className="flex gap-4 pt-2 mt-4 border-t border-stone-300 w-fit">
                 <ToggleSimulationButton isRunningRef={isRunningRef} onClick={() => setGlobalContext(localContext)} startSimulation={startSimulation}/>
                 <ResetContextButton onClick={resetContext}/>
