@@ -128,6 +128,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     onChange={handleNumInputChange("initialAliveRate")}
                     min={1}
                     max={100}
+                    tooltipText="Probability that each cell is initially alive"
                 />
 
                 <ControlPanelInput
@@ -146,6 +147,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     value={localContext.deadToAliveCondition}
                     placeholder={localContext.deadToAliveCondition.toString()}
                     onChange={handleTextInputChange("deadToAliveCondition")}
+                    tooltipText="If the number of living neighbours (0-8) of a dead cell is contained in this list, the cell becomes alive."
                 />
 
                 <ControlPanelInput
@@ -154,6 +156,7 @@ const ControlPanel = ({canvasRef, globalContext, isRunningRef, setGlobalContext}
                     value={localContext.aliveToAliveCondition}
                     placeholder={localContext.aliveToAliveCondition.toString()}
                     onChange={handleTextInputChange("aliveToAliveCondition")}
+                    tooltipText="If the number of living neighbours (0-8) of a living cell is contained in this list, the cell stays alive."
                 />
             </div>
 
