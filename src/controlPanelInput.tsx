@@ -28,7 +28,7 @@ const ControlPanelInput = ({title, type, value, placeholder, onChange, min, max,
                                     <Info className="h-4 w-4"/>
                                 </div>
                             </label>
-                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-xs p-2 m-2 bg-white text-stone-800 text-sm border border-stone-300 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <div className="pointer-events-none absolute bottom-full left-1/2 transform -translate-x-1/2 w-xs p-2 m-2 bg-white text-stone-800 text-sm border border-stone-300 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                 {tooltipText}
                             </div>
                         </div>
