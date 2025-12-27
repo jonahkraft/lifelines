@@ -8,6 +8,7 @@ A visualization of Conway's Game of Life
 - `TypeScript`
 - `Tailwind CSS`
 - `Vite`
+- `Lucide Icons`
 
 ## Features
 
