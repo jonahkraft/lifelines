@@ -17,13 +17,13 @@ It is possible to customize the following settings through a UI:
 - Number of rows / columns
 - Number of iterations
 - Initial alive rate (when the matrix is initialized, this is the rate of a single cell to be alive)
-- sleep duration (time between redraws)
-- dead to alive condition
-- alive to alive condition
+- Sleep duration (time between redraws)
+- Dead to alive condition
+- Alive to alive condition
 
-At each timestep, the number of living neighbours is calculated for each cell. If a cell is currently dead and the
-number of living neighbours is contained in "dead to alive condition", the cell becomes alive. This works analogously for
-living cells. The default values are the ones from Conwy's Game of Life, but changing these values might be of interest.
+At each timestep, the number of living neighbors is calculated for each cell. If a cell is currently dead and the
+number of living neighbors is contained in "dead to alive condition", the cell becomes alive. This works analogously for
+living cells. The default values are the ones from Conway's Game of Life, but changing these values might be of interest.
 
 ## Running the project
 
